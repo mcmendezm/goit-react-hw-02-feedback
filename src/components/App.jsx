@@ -1,45 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-//
-
-const Section = ({ title, children }) => (
-  <div>
-    <h2 style={{ color: '#2E97DC' }}>{title}</h2>
-    {children}
-  </div>
-);
-
-const Statistics = ({ good, neutral, bad, total, positivePercentage }) => (
-  <div>
-    <p>Good: {good}</p>
-    <p>Neutral: {neutral}</p>
-    <p>Bad: {bad}</p>
-    <p>Total: {total}</p>
-    <p>Positive Percentage: {positivePercentage}%</p>
-  </div>
-);
-
-const FeedbackOptions = ({ options, onLeaveFeedback }) => (
-  <div>
-    {options.map(option => (
-      <button
-        style={{
-          margin: '4px',
-          backgroundColor: '#2874A6 ',
-          color: '#fff',
-          padding: '5px 8px',
-          border: 'none',
-          borderRadius: '10px',
-          cursor: 'pointer',
-        }}
-        key={option}
-        onClick={() => onLeaveFeedback(option)}
-      >
-        {option}
-      </button>
-    ))}
-  </div>
-);
+import { FeedbackOptions } from './FeedbackOptions';
+import { Section } from './Section';
+import { Statistics } from './Statistics';
 
 class App extends Component {
   state = {
@@ -99,19 +61,3 @@ class App extends Component {
 }
 
 export default App;
-
-Statistics.propTypes = {
-  good: PropTypes.number.isRequired,
-  neutral: PropTypes.number.isRequired,
-  bad: PropTypes.number.isRequired,
-  total: PropTypes.number.isRequired,
-  positivePercentage: PropTypes.number.isRequired,
-};
-FeedbackOptions.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onLeaveFeedback: PropTypes.func.isRequired,
-};
-Section.propTypes = {
-  title: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-};
